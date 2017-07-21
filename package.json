@@ -1,0 +1,22 @@
+{
+  "name": "stock_management",
+  "version": "1.0.0",
+  "description": "An Express Js Project",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hmmis/Stock-Management.git"
+  },
+  "author": "H M Mohidul Islam",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hmmis/Stock-Management/issues"
+  },
+  "homepage": "https://github.com/hmmis/Stock-Management#readme",
+  "dependencies": {
+    "express": "^4.15.3"
+  }
+}
