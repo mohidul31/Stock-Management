@@ -6,6 +6,7 @@ var app=express();
 
 /*Custom Module*/
 var home_controller = require('./controllers/home_controller');
+/*var db = require('./db_config');*/
 
 /* Start the server*/
 app.listen(1000,function(req,res) {
@@ -18,5 +19,5 @@ app.set('view engine','ejs');
 
 /*Middleware*/
 app.use('/public',express.static('public'));
-
 app.use('/',home_controller);
+
