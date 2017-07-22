@@ -1,5 +1,5 @@
+/*Database Connection*/
 var mysql      = require('mysql');
-
 var connection = mysql.createConnection({
   host     : 'localhost',
   user     : 'root',
@@ -15,3 +15,8 @@ connection.connect(function(err) {
 });
 
 module.exports.con=connection;
+
+
+/*Base Url*/
+var base_url='http://localhost:1000/';
+module.exports.base_url=base_url;

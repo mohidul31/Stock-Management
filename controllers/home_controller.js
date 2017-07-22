@@ -13,6 +13,7 @@ app.get('/', function(req, res) {
 	db.con.query(sql, function(error,results) {
 
 		var data={
+			base_url:db.base_url,
 			title:"Stock Report | Home Page",
 			product_info_list:results,
 		}
