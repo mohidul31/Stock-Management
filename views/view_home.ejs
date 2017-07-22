@@ -1,11 +1,59 @@
+<!-- Header -->
 <% include template/view_header %>
-<body>
-
-	<div class="container-fluid">
-		<h1>Welcome To Home Page</h1>
-
-	</div>
+<!-- /Header -->
 	
+	<!-- Container Starts -->
+	<div class="container-fluid">
+		
+		<center><h1>Welcome To Stock Management</h1></center>
+		<!-- menu -->
+			<% include template/view_menu %>
+		<!-- /menu -->
+		<center><h4>Stock Report</h4></center>
 
-</body>
-</html>
+	<% if (product_info_list) { %>
+	<table class="table table-bordered">
+		<thead>
+			<tr>
+				<th>SL</th>
+				<th>Product Name</th>
+				<th>Product Details</th>
+				<th>Uni Price</th>
+				<th>Stock</th>
+				<th>Edit</th>
+				<th>Delete</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% 
+			var sl=1;
+			product_info_list.forEach(function(row){ %>
+			<tr>
+				<td><%= sl++ %></td>
+				<td><%= row.product_name %></td>
+				<td><%= row.product_details %></td>
+				<td><%= row.unit_price %></td>
+				<td><%= row.remain_stock %></td>
+				<td>
+					<a href="/edit/<%= row.product_id %>">
+						<i class="fa fa-edit" aria-hidden="true"></i>
+					</a>
+				</td>
+				<td>
+					<a href="/delete/<%= row.product_id %>" onclick="return confirm('Are You Sure?')">
+						<i class="fa fa-remove" aria-hidden="true"></i>
+					</a>
+				</td>
+			</tr>
+			<% }); %>
+			
+		</tbody>
+	</table>
+	<% } %>
+	
+	</div>
+	<!-- Container Ends -->
+
+<!-- Footer -->
+<% include template/view_footer %>
+<!-- /Footer -->
