@@ -16,3 +16,17 @@ app.get('/create', function(req, res) {
 	res.render('view_add_product_info',data);
 	
 });
+app.post('/insert_product_indo', function(req, res) {
+
+	var insert={
+		product_name :req.body.name,
+		product_details :req.body.details,
+		unit_price :req.body.unit_price,
+		remain_stock :req.body.opening_stock,
+	}
+
+	console.log(insert);
+
+	res.redirect('/');
+	
+});

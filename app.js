@@ -3,11 +3,12 @@
  */
 var express=require('express');
 var app=express();
+var bodyParser = require('body-parser');
 
 /*Custom Module*/
 var home_controller = require('./controllers/home_controller');
 var product_info_controller = require('./controllers/product_info_controller');
-/*var db = require('./db_config');*/
+
 
 /* Start the server*/
 app.listen(1000,function(req,res) {
@@ -16,12 +17,10 @@ app.listen(1000,function(req,res) {
 
 /*config*/
 app.set('view engine','ejs');
+app.use(bodyParser.urlencoded({ extended: false }))
 
 
 /*Middleware*/
-
-//app.use('/public',express.static(require('path').resolve(__dirname + "/public")));
-//app.use(express.static('./public/css/'));
 app.use('/public',express.static('./public'));
 app.use('/',home_controller);
 app.use('/product_info',product_info_controller);

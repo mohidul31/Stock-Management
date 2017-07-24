@@ -3,7 +3,7 @@
 <!-- /Header -->
 	
 	<!-- Container Starts -->
-	<div class="container-fluid">
+	<div class="container">
 		
 		<center><h1>Welcome To Stock Management</h1></center>
 		<!-- menu -->
@@ -11,8 +11,18 @@
 		<!-- /menu -->
 		<center><h4>Add New Product</h4></center>
 
-		<form action="" method="POST" class="form-inline">
-			
+		<form action="/product_info/insert_product_indo" method="POST" class="">
+
+			Product Name :
+			<input type="text" name="name" class="form-control" >
+			Product Details :
+			<input type="text" name="details" class="form-control" >
+			Product Unit Price :
+			<input type="number" step="any" name="unit_price" class="form-control" >
+			Opening Stock :
+			<input type="number" step="any" name="opening_stock" class="form-control" ><br>
+
+			<input type="submit" name="submit" value="Save" class="btn btn-success">
 			
 		</form>
 
