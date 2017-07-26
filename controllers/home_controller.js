@@ -7,10 +7,8 @@ module.exports = app;
 
 /*route*/
 app.get('/', function(req, res) {
-
-	var sql="SELECT * FROM `products_info`";
-
-	db.con.query(sql, function(error,results) {
+	
+	db.qb.get('products_info', function(error,results) {
 
 		var data={
 			base_url:db.base_url,

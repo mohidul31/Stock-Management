@@ -16,32 +16,33 @@ app.get('/create', function(req, res) {
 	res.render('view_add_product_info',data);
 	
 });
-app.post('/insert_product_indo', function(req, res) {
+app.post('/insert_product_info', function(req, res) {
 
-	
-	var	product_name =req.body.name;
-	var	product_details =req.body.details;
-	var	unit_price =req.body.unit_price;
-	var	remain_stock =req.body.opening_stock;
-	
+	var insert_product_data={
+		'product_name':req.body.name,
+		'product_details':req.body.details,
+		'unit_price':req.body.unit_price,
+		'remain_stock':req.body.opening_stock,
+	}
+	// insert products_info
+	db.qb.insert('products_info', insert_product_data , function(error,results) {
 
-	var sql = "INSERT INTO `products_info`(`product_id`, `product_name`, `product_details`, `unit_price`, `remain_stock`) VALUES (NULL, '"+product_name+"', '"+product_details+"', '"+unit_price+"', '"+remain_stock+"')";
+		db.qb.select_max('product_id').get('products_info',function(err,res){
 
-	db.con.query(sql, function(error,results) {
-		console.log('Successfully Inserted in products_info');
-		var sql2="SELECT MAX(product_id) as last_inserted_id FROM products_info";
-		
-		db.con.query(sql2,function(error,results){
-			var last_inserted_id=results[0]['last_inserted_id'];
+			var last_inserted_id=res[0]['product_id'];
 
-			var sql3 = "INSERT INTO `product_in_out_data`(`product_in_out_data_id`,`product_id`,`in_qty`,`out_qty`,`in_out_type` ,`in_out_unt_price` ,`remarks`)VALUES (NULL,'"+last_inserted_id+"','"+remain_stock+"','0','1','"+unit_price+"','Opening Stock')";
-
-				     db.con.query(sql3,function(error,results){
-				     	console.log('Successfully Inserted in product_in_out_data');
-				     });
+			var insert_in_out_data={
+				'product_id' :last_inserted_id,
+				'in_qty' : req.body.opening_stock,
+				'out_qty' : '0',
+				'in_out_type' : '1',
+				'in_out_unt_price' : req.body.unit_price,
+				'remarks' : 'Opening Stock11',
+			}
+			// insert in products_in_out_data
+			db.qb.insert('product_in_out_data',insert_in_out_data,function(){});
 
 		});
-
 	});
 	
 	res.redirect('/');
