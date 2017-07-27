@@ -1,0 +1,57 @@
+<!-- Header -->
+<% include template/view_header %>
+<!-- /Header -->
+	
+	<!-- Container Starts -->
+	<div class="container">
+		
+		<center><h1>Welcome To Stock Management</h1></center>
+		<!-- menu -->
+			<% include template/view_menu %>
+		<!-- /menu -->
+		<center><h4><%= title %></h4></center>
+
+	<% if (product_history) { %>
+	<table class="table table-bordered">
+		<thead>
+			<tr>
+				<th>SL</th>
+				<th>Product Name</th>
+				<th>Qty</th>
+				<th>Price</th>
+				<th>Remarks</th>
+				<th>Time</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% 
+			var sl=1;
+			product_history.forEach(function(row){ %>
+			<tr>
+				<td><%= sl++ %></td>
+				<td><%= row.product_name %></td>
+				<td>
+				<% if(row.in_out_type=='1'){ %>
+					<%= row.in_qty %> 
+				<% } else{ %>
+					<%= row.out_qty %> 
+				<% } %>
+					
+				</td>
+				<td><%= row.in_out_unt_price %></td>
+				<td><%= row.remarks %></td>
+				<td><%= row.created_at %></td>
+				
+			</tr>
+			<% }); %>
+			
+		</tbody>
+	</table>
+	<% } %>
+	
+	</div>
+	<!-- Container Ends -->
+
+<!-- Footer -->
+<% include template/view_footer %>
+<!-- /Footer -->

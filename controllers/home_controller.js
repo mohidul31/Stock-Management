@@ -6,7 +6,7 @@ module.exports = app;
 
 
 /*route*/
-app.get('/', function(req, res) {
+app.get('/', function(request, response) {
 	
 	db.qb.get('products_info', function(error,results) {
 
@@ -15,13 +15,14 @@ app.get('/', function(req, res) {
 			title:"Stock Report | Home Page",
 			product_info_list:results,
 		}
-		res.render("view_home",data);
+		response.render("view_home",data);
 
 	});
 });
 
-app.get('/home', function(req, res) {
+app.get('/home', function(request, response) {
 
-	res.redirect('/');
+	response.redirect('/');
 	
 });
+
