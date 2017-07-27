@@ -8,6 +8,7 @@ var bodyParser = require('body-parser');
 /*Custom Module*/
 var home_controller = require('./controllers/home_controller');
 var product_info_controller = require('./controllers/product_info_controller');
+var product_sell_controller = require('./controllers/product_sell_controller');
 
 
 /* Start the server*/
@@ -24,3 +25,4 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use('/public',express.static('./public'));
 app.use('/',home_controller);
 app.use('/product_info',product_info_controller);
+app.use('/product_sell',product_sell_controller);

@@ -37,7 +37,7 @@ app.post('/insert_product_info', function(req, res) {
 				'out_qty' : '0',
 				'in_out_type' : '1',
 				'in_out_unt_price' : req.body.unit_price,
-				'remarks' : 'Opening Stock11',
+				'remarks' : 'Opening Stock',
 			}
 			// insert in products_in_out_data
 			db.qb.insert('product_in_out_data',insert_in_out_data,function(){});
