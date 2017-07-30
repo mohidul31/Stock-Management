@@ -45,8 +45,10 @@ app.post('/sell', function(request, response) {
 			// insert in products_in_out_data
 			db.qb.insert('product_in_out_data',insert_in_out_data,function(error,results){});
 
+			var previous_stock=results[0]['remain_stock'];
+			
 			var update_data={
-				remain_stock:results[0]['remain_stock']-products_qty,
+				remain_stock:parseFloat(previous_stock)-parseFloat(products_qty),
 			}
 			db.qb.update('products_info', update_data, {product_id:product_id}, function(error,results){});
 	});

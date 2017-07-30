@@ -1,0 +1,41 @@
+<!-- Header -->
+<% include template/view_header %>
+<!-- /Header -->
+	
+	<!-- Container Starts -->
+	<div class="container">
+		
+		<center><h1>Welcome To Stock Management</h1></center>
+		<!-- menu -->
+			<% include template/view_menu %>
+		<!-- /menu -->
+		<center><h4>Add stock</h4></center>
+
+		<form action="" method="POST" class="">
+
+			Product Name :
+			<select class="form-control select2" name="products_id">
+				<option>--Please Select--</option>
+				<% if(products_info_list){ %>
+				<% products_info_list.forEach(function(row){ %>
+
+						<option value="<%= row.product_id %>"> <%= row.product_name %> </option>
+
+				<%	}); %>
+				<% } %>
+			</select>
+			Add Stock Qty :
+			<input type="number" step="any" name="products_qty" class="form-control" >
+			Remarks :
+			<input type="text" name="remarks" class="form-control" ><br>
+
+			<input type="submit" name="submit" value="Add Stock" class="btn btn-info">
+			
+		</form>
+		
+	</div>
+	<!-- Container Ends -->
+
+<!-- Footer -->
+<% include template/view_footer %>
+<!-- /Footer -->

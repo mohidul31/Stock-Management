@@ -26,6 +26,19 @@
 			
 		</form>
 
+
+		<% if (errors) { %>
+
+	<ul>
+		<% errors.forEach(function(e){ %>
+
+			<li><%= e %></li>
+
+		<% }); %>
+	</ul>
+
+	<% } %>
+
 		
 	</div>
 	<!-- Container Ends -->

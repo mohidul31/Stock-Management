@@ -16,11 +16,13 @@
 			Product Name :
 			<select class="form-control select2" name="products_id">
 				<option>--Please Select--</option>
+				<% if(products_info_list){ %>
 				<% products_info_list.forEach(function(row){ %>
 
 						<option value="<%= row.product_id %>"> <%= row.product_name %> </option>
 
 				<%	}); %>
+				<% } %>
 			</select>
 			Sell Qty :
 			<input type="number" step="any" name="products_qty" class="form-control" >

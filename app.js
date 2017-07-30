@@ -4,6 +4,7 @@
 var express=require('express');
 var app=express();
 var bodyParser = require('body-parser');
+var validate = require('form-validate');
 
 /*Custom Module*/
 var home_controller = require('./controllers/home_controller');
@@ -19,6 +20,7 @@ app.listen(1000,function(req,res) {
 /*config*/
 app.set('view engine','ejs');
 app.use(bodyParser.urlencoded({ extended: false }))
+app.use(validate(app));
 
 
 /*Middleware*/
